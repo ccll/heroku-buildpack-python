@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# fail hard
+set -o pipefail
+# fail harder
+set -eu
+
+if pytest --version &> /dev/null; then
+    echo "`pytest` found, executing ..."
+    pytest
+else
+    echo "No test tool found." >&2
+	exit 1
+fi
